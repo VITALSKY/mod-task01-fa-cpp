@@ -13,7 +13,7 @@ unsigned int faStr1(const char *str)
 				{
 					if (str[i] == '\0')
 						break;
-					i++
+					i++;
 				}
 			}
 			else
@@ -82,7 +82,7 @@ unsigned int faStr2(const char *str)
 }
 unsigned int faStr3(const char *str)
 {
-    int i = 0;
+   	int i = 0;
 	double sum = 0;
 	int count_word = 0;
 	vector<int>word;
@@ -111,7 +111,7 @@ unsigned int faStr3(const char *str)
 	}
 	sum = sum / double(word.size());
 	int itog = sum;
-	if (abs(sum - (float)itog) >= 0.5)
+	if (sum - (float)itog >= 0.5)
 		itog++;
 
 	return itog;
