@@ -42,46 +42,32 @@ unsigned int faStr1(const char *str)
 unsigned int faStr2(const char *str)
 {
     int i = 0;
-	unsigned int counter = 0;
-	int stroch = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] >= 65 && str[i] <= 90)
-		{
-			i++;
-			while (str[i] != ' ')
-			{
-				if (str[i] >= 97 && str[i] <= 122)
-				{
-					i++;
-				}
-				else
-				{
-					i++;
-					stroch = 1;
-				}
-				if (str[i] == '\0')
-					break;
-			}
-			if (stroch == 0)
-			{
-				counter++;
-			}
-		}
-		else
-		{
-			while (str[i] != ' ')
-			{
-				if (str[i] == '\0')
-					break;
-				i++;
-			}
-		}
-		stroch = 0;
-		i++;
-	}
-
-	return counter;
+    unsigned int counter = 0;
+    int log = 0;
+    int uppercase_word = 0;
+    while (str[i] != '\0')
+    {
+        if (log == 0 && str[i] >= 65 && str[i] <= 90)
+        {
+            log = 1;
+            uppercase_word = 1;
+        }
+        else if (log == 1 && str[i] == ' ')
+        {
+            if (uppercase_word == 1) counter++;
+            uppercase_word = 0;
+            log = 0;
+        }
+        else if (log == 1 && str[i] != ' ' && uppercase_word == 1)
+        {
+            if (str[i] >= 65 && str[i] <= 90) uppercase_word = 0;
+            if (str[i] > 122 || str[i] < 65) uppercase_word = 0;
+        }
+        i++;
+    }
+    if (log == 1 && uppercase_word == 1) 
+	    counter++;
+    return counter;
 }
 unsigned int faStr3(const char *str)
 {
