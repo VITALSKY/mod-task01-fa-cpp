@@ -82,10 +82,10 @@ unsigned int faStr2(const char *str)
 }
 unsigned int faStr3(const char *str)
 {
-   	int i = 0;
+ int i = 0;
 	double sum = 0;
+	int kolvo = 0;
 	int count_word = 0;
-	vector<int>word;
 	while (str[i] != '\0')
 	{
 		if (str[i] != ' ')
@@ -97,19 +97,15 @@ unsigned int faStr3(const char *str)
 				count_word++;
 				i++;
 			}
-			word.push_back(count_word);
-			count_word = 0;
+			kolvo++;
 		}
 		else
 		{
 			i++;
 		}
 	}
-	for (int k = 0; k < word.size(); k++)
-	{
-		sum = sum + word[k];
-	}
-	sum = sum / double(word.size());
+	sum = count_word;
+	sum = sum / double(kolvo);
 	int itog = sum;
 	if (sum - (float)itog >= 0.5)
 		itog++;
