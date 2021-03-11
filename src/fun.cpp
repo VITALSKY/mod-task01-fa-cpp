@@ -60,6 +60,8 @@ unsigned int faStr2(const char *str)
 					i++;
 					stroch = 1;
 				}
+				if (str[i] == '\0')
+					break;
 			}
 			if (stroch == 0)
 			{
@@ -78,6 +80,7 @@ unsigned int faStr2(const char *str)
 		stroch = 0;
 		i++;
 	}
+
 	return counter;
 }
 unsigned int faStr3(const char *str)
