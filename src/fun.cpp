@@ -1,35 +1,41 @@
 unsigned int faStr1(const char *str)
 {
-    int i = 0;
+    	int i = 0;
 	unsigned int counter = 0;
 	bool log = false;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= 65 && str[i] <= 90)
+		if (str[i] != ' ')
 		{
-			i++;
-			while (str[i] != ' ')
+			if (str[i] >= '0' && str[i] <= '9')
 			{
-				if (str[i] > 122 || str[i] < 65)
+				while (str[i] != ' ')
 				{
-					i++;
+					if (str[i] == '\0')
+						break;
+					i++
 				}
 			}
-		}
-		else
-		{
-			while (str[i] != ' ')
+			else
 			{
-				log = true;
-				i++;
+				while (str[i] != ' ')
+				{
+					if (str[i] >= '0' && str[i] <= '9' && log == false)
+					{
+						i++;
+						log = true;
+					}
+					else
+					{
+						i++;
+					}
+				}
+				if (log == false)
+					counter++;
 			}
+			log = false;
 		}
-		if (log == false)
-		{
-			counter++;
-		}
-		log = false;
-		
+		i++;
 	}
 	return counter;
 }
